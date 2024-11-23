@@ -25,7 +25,7 @@ class _LoginpageState extends State<Loginpage> {
             hintText: textFieldHint, // Placeholder text
             hintStyle: TextStyle(
                 color: Colors.grey[400],
-                fontSize: 16,
+                fontSize: 14,
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8), // Rounded corners
@@ -49,7 +49,7 @@ class _LoginpageState extends State<Loginpage> {
               ),
             ),
             contentPadding: EdgeInsets.symmetric(
-              vertical: 18,
+              vertical: 16,
               horizontal: 16,
             ), // Inner padding for the text field
           ),
@@ -108,7 +108,7 @@ class _LoginpageState extends State<Loginpage> {
           children: [
             Text(
               'Dont have an account? ',
-              style: TextStyle(fontSize: 20,
+              style: TextStyle(fontSize: 18,
                 fontWeight: FontWeight.w400,
               ),
             ),
@@ -116,7 +116,7 @@ class _LoginpageState extends State<Loginpage> {
               onTap: () {},
               child: Text(
                 'Sign In',
-                style: TextStyle(fontSize: 20,
+                style: TextStyle(fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -130,6 +130,7 @@ class _LoginpageState extends State<Loginpage> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         color: Colors.black87,
         child: Column(
@@ -146,7 +147,7 @@ class _LoginpageState extends State<Loginpage> {
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.only(top: 34,left: 16, right: 16, bottom:24),
+                  padding: EdgeInsets.only(top: 34,left: 18, right: 20, bottom:24),
                   child: Column(
                     children: [
                       Text(
