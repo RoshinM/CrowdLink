@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Loginpage extends StatefulWidget {
   const Loginpage({super.key});
@@ -28,9 +29,12 @@ class _LoginpageState extends State<Loginpage> {
                     topRight: Radius.circular(25),
                   ),
                 ),
-                child: const Padding(
+                child: Padding(
                   padding: EdgeInsets.all(16.0),
-                  child: Text("Your content here"),
+                  child: Text(
+                    'Outfit Font Example',
+                    style: GoogleFonts.outfit(fontSize: 24),
+                  ),
                 ),
               ),
             )
