@@ -1,4 +1,5 @@
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -10,17 +11,24 @@ class Loginpage extends StatefulWidget {
 }
 
 class _LoginpageState extends State<Loginpage> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
-  inputCredentialsField(String fieldName, String textFieldHint){
+  inputCredentialsField(String fieldName, String textFieldHint,
+      TextEditingController controller){
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(fieldName,
-          style: TextStyle(color: Color(0xFF747474),
+        Text(
+          fieldName,
+          style: TextStyle(
+            color: Color(0xFF747474),
             fontSize: 16,
           ),
         ),
-        TextField(
+        TextFormField(
+          controller: controller,
+          obscureText: fieldName == 'Password',// true if password
           decoration: InputDecoration(
             hintText: textFieldHint, // Placeholder text
             hintStyle: TextStyle(
@@ -80,7 +88,8 @@ class _LoginpageState extends State<Loginpage> {
       height: 60, // Adjust height as needed
       child: ElevatedButton(
         onPressed: () {
-        //Validate and Redirect
+          //Validate and Redirect
+          login();
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.black87, // Button background color
@@ -107,7 +116,7 @@ class _LoginpageState extends State<Loginpage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Dont have an account? ',
+              "Don't have an account? ",
               style: TextStyle(fontSize: 18,
                 fontWeight: FontWeight.w400,
               ),
@@ -115,7 +124,7 @@ class _LoginpageState extends State<Loginpage> {
             GestureDetector(
               onTap: () {},
               child: Text(
-                'Sign In',
+                'Sign Up',
                 style: TextStyle(fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -124,6 +133,42 @@ class _LoginpageState extends State<Loginpage> {
           ],
         )
     );
+  }
+
+  //Firebase authentication
+  Future<void> login() async{
+    final auth = FirebaseAuth.instance;
+
+    final email = emailController.text.trim();
+    final password = passwordController.text.trim();
+
+    if (email.isEmpty || password.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Please fill in all fields')),
+      );
+      return;
+    }
+
+    try {
+      UserCredential userCredential = await auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      print('User signed in: ${userCredential.user?.email}');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Login Successful!')),
+      );
+
+      // Navigate to another page if required
+      // Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage()));
+
+    } catch (e) {
+      print('Error during login: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Login failed: ${e.toString()}')),
+      );
+    }
   }
 
   @override
@@ -162,9 +207,9 @@ class _LoginpageState extends State<Loginpage> {
                             color: Colors.grey),
                       ),
                       SizedBox(height: 24,),
-                      inputCredentialsField('Email', 'Enter your email'),
+                      inputCredentialsField('Email', 'Enter your email',emailController),
                       SizedBox(height: 24,),
-                      inputCredentialsField('Password', 'Enter your password'),
+                      inputCredentialsField('Password', 'Enter your password',passwordController),
                       SizedBox(height: 8,),
                       forgotPassword(),
                       SizedBox(height: 32,),
