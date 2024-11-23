@@ -89,7 +89,7 @@ class _LoginpageState extends State<Loginpage> {
       child: ElevatedButton(
         onPressed: () {
           //Validate and Redirect
-          login();
+          // login();
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.black87, // Button background color
@@ -136,40 +136,40 @@ class _LoginpageState extends State<Loginpage> {
   }
 
   //Firebase authentication
-  Future<void> login() async{
-    final auth = FirebaseAuth.instance;
-
-    final email = emailController.text.trim();
-    final password = passwordController.text.trim();
-
-    if (email.isEmpty || password.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please fill in all fields')),
-      );
-      return;
-    }
-
-    try {
-      UserCredential userCredential = await auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-
-      print('User signed in: ${userCredential.user?.email}');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Login Successful!')),
-      );
-
-      // Navigate to another page if required
-      // Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage()));
-
-    } catch (e) {
-      print('Error during login: $e');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Login failed: ${e.toString()}')),
-      );
-    }
-  }
+  // Future<void> login() async{
+  //   final auth = FirebaseAuth.instance;
+  //
+  //   final email = emailController.text.trim();
+  //   final password = passwordController.text.trim();
+  //
+  //   if (email.isEmpty || password.isEmpty) {
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       SnackBar(content: Text('Please fill in all fields')),
+  //     );
+  //     return;
+  //   }
+  //
+  //   try {
+  //     UserCredential userCredential = await auth.signInWithEmailAndPassword(
+  //       email: email,
+  //       password: password,
+  //     );
+  //
+  //     print('User signed in: ${userCredential.user?.email}');
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       SnackBar(content: Text('Login Successful!')),
+  //     );
+  //
+  //     // Navigate to another page if required
+  //     // Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage()));
+  //
+  //   } catch (e) {
+  //     print('Error during login: $e');
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       SnackBar(content: Text('Login failed: ${e.toString()}')),
+  //     );
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
