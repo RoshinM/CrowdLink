@@ -1,4 +1,5 @@
 
+import 'package:crowd_link/pages/homePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -90,6 +91,10 @@ class _LoginpageState extends State<Loginpage> {
         onPressed: () {
           //Validate and Redirect
           // login();
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HomePage()),
+          );
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.black87, // Button background color
