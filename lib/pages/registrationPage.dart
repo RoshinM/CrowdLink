@@ -106,7 +106,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 );
               },
-              child: Text(
+              child: const Text(
                 'Log In',
                 style: TextStyle(fontSize: 18,
                   fontWeight: FontWeight.bold,

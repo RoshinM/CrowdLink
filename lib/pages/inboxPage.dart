@@ -11,9 +11,28 @@ class InboxPage extends StatefulWidget {
 
 class _InboxPageState extends State<InboxPage> {
 
+  final List<Map<String, dynamic>> inboxItems = [
+  {
+  'name': 'Insan Pribadi',
+  'time': '36 mins ago',
+  },
+  {
+  'name': 'Insan Pribadi',
+  'time': '36 mins ago',
+  },
+  {
+  'name': 'Insan Pribadi',
+  'time': '36 mins ago',
+  },
+  {
+  'name': 'Insan Pribadi',
+  'time': '36 mins ago',
+  },
+  ];
+
   topNavBar() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 16, horizontal: 22),
+      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 22),
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
@@ -27,10 +46,10 @@ class _InboxPageState extends State<InboxPage> {
           Row(
             children: [
               IconButton(
-                icon: Icon(Icons.arrow_back_rounded),
+                icon: const Icon(Icons.arrow_back_rounded),
                 onPressed: () {},
               ),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               Text(
                 'Inbox',
                 style: GoogleFonts.outfit(fontSize: 32,
@@ -39,9 +58,55 @@ class _InboxPageState extends State<InboxPage> {
             ],
           ),
           IconButton(
-            icon: Icon(Icons.add),
+            icon: const Icon(Icons.add),
             onPressed: () {},
           )
+        ],
+      ),
+    );
+  }
+
+  Widget inboxItem(Map<String, dynamic> item) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 22),
+      child: Row(
+        children: [
+          Container(
+            width: 65,
+            height: 65,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.grey[200],
+            ),
+            child: const Icon(
+              Icons.person,
+              color: Colors.grey,
+              size: 45,
+            ),
+          ),
+          const SizedBox(width: 20),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  item['name'],
+                  style: GoogleFonts.outfit(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  item['time'],
+                  style: GoogleFonts.outfit(
+                    fontSize: 16,
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -51,7 +116,7 @@ class _InboxPageState extends State<InboxPage> {
     return Expanded(
       child: Container(
         width: size.width,
-        padding: EdgeInsets.only(left: 18,top: 24,right: 18),
+        padding: const EdgeInsets.only(left: 18,top: 24,right: 18),
         decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
@@ -59,10 +124,11 @@ class _InboxPageState extends State<InboxPage> {
             topRight: Radius.circular(15),
           ),
         ),
-        child: ListView(
-          children: [
-            Text("Chat inbox appears here"),
-          ],
+        child: ListView.builder(
+          itemCount: inboxItems.length,
+          itemBuilder: (context, index) {
+            return inboxItem(inboxItems[index]);
+          },
         ),
       ),
     );
@@ -77,7 +143,7 @@ class _InboxPageState extends State<InboxPage> {
       body: Column(
         children: [
           topNavBar(),
-          SizedBox(height: 1,),
+          const SizedBox(height: 1,),
           homePageBody(size),
         ],
       ),
