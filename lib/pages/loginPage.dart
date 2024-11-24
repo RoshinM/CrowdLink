@@ -3,14 +3,14 @@ import 'package:crowd_link/pages/registrationPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Loginpage extends StatefulWidget {
-  const Loginpage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<Loginpage> createState() => _LoginpageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginpageState extends State<Loginpage> {
+class _LoginPageState extends State<LoginPage> {
 
   inputCredentialsField(String fieldName, String textFieldHint){
     return Column(
@@ -118,7 +118,7 @@ class _LoginpageState extends State<Loginpage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Registerpage(),
+                    builder: (context) => RegisterPage(),
                   ),
                 );
               },
