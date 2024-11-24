@@ -1,4 +1,5 @@
 import 'package:crowd_link/pages/homePage.dart';
+import 'package:crowd_link/pages/registrationPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -126,7 +127,12 @@ class _LoginpageState extends State<Loginpage> {
               ),
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RegisterPage()),
+                );
+              },
               child: Text(
                 'Sign Up',
                 style: TextStyle(fontSize: 18,
