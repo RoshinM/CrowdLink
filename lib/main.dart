@@ -1,4 +1,5 @@
 import 'package:crowd_link/pages/loginPage.dart';
+import 'package:crowd_link/pages/registrationPage.dart';
 import 'package:flutter/material.dart';
 
 void main() {

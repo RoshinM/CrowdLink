@@ -1,4 +1,5 @@
 
+import 'package:crowd_link/pages/registrationPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -107,15 +108,22 @@ class _LoginpageState extends State<Loginpage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Dont have an account? ',
+              "Don't have an account? ",
               style: TextStyle(fontSize: 18,
                 fontWeight: FontWeight.w400,
               ),
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Registerpage(),
+                  ),
+                );
+              },
               child: Text(
-                'Sign In',
+                'Sign Up',
                 style: TextStyle(fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
