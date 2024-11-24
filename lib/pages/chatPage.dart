@@ -13,7 +13,7 @@ class _ChatPageState extends State<ChatPage> {
 
   topNavBar() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 16, horizontal: 22),
+      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 22),
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
@@ -27,10 +27,10 @@ class _ChatPageState extends State<ChatPage> {
           Row(
             children: [
               IconButton(
-                icon: Icon(Icons.arrow_back_rounded),
+                icon: const Icon(Icons.arrow_back_rounded),
                 onPressed: () {},
               ),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               Text(
                 'User',
                 style: GoogleFonts.outfit(fontSize: 32,
@@ -39,7 +39,7 @@ class _ChatPageState extends State<ChatPage> {
             ],
           ),
           IconButton(
-            icon: Icon(Icons.add),
+            icon: const Icon(Icons.add),
             onPressed: () {},
           )
         ],
@@ -51,7 +51,7 @@ class _ChatPageState extends State<ChatPage> {
     return Expanded(
       child: Container(
         width: size.width,
-        padding: EdgeInsets.only(left: 18,top: 24,right: 18),
+        padding: const EdgeInsets.only(left: 18,top: 24,right: 18),
         decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
@@ -60,7 +60,7 @@ class _ChatPageState extends State<ChatPage> {
           ),
         ),
         child: ListView(
-          children: [
+          children: const [
             Text("Chat inbox appears here"),
           ],
         ),
@@ -77,7 +77,7 @@ class _ChatPageState extends State<ChatPage> {
       body: Column(
         children: [
           topNavBar(),
-          SizedBox(height: 1,),
+          const SizedBox(height: 1,),
           homePageBody(size),
         ],
       ),

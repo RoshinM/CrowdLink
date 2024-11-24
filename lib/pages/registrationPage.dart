@@ -17,7 +17,7 @@ class _RegisterPageState extends State<RegisterPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(fieldName,
-            style: TextStyle(color: Color(0xFF747474),
+            style: const TextStyle(color: Color(0xFF747474),
               fontSize: 16,
             ),
           ),
@@ -44,12 +44,12 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                   color: Colors.blue, // Focused border color
                   width: 1.5,
                 ),
               ),
-              contentPadding: EdgeInsets.symmetric(
+              contentPadding: const EdgeInsets.symmetric(
                 vertical: 16,
                 horizontal: 16,
               ), // Inner padding for the text field
@@ -73,7 +73,7 @@ class _RegisterPageState extends State<RegisterPage> {
             borderRadius: BorderRadius.circular(12), // Rounded corners
           ),
         ),
-        child: Text(
+        child: const Text(
           'Sign Up',
           style: TextStyle(
             color: Colors.white, // Text color
@@ -91,7 +91,7 @@ class _RegisterPageState extends State<RegisterPage> {
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               "Already have an account? ",
               style: TextStyle(fontSize: 18,
                 fontWeight: FontWeight.w400,
@@ -102,7 +102,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => LoginPage(),
+                    builder: (context) => const LoginPage(),
                   ),
                 );
               },
@@ -139,7 +139,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.only(top: 34,left: 18, right: 20, bottom:24),
+                  padding: const EdgeInsets.only(top: 34,left: 18, right: 20, bottom:24),
                   child: Column(
                     children: [
                       Text(
@@ -147,19 +147,19 @@ class _RegisterPageState extends State<RegisterPage> {
                         style: GoogleFonts.outfit(fontSize: 32,
                             fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(height: 8,),
+                      const SizedBox(height: 8,),
                       Text(
                         'Enter a short Subtitle here',
                         style: GoogleFonts.outfit(fontSize: 16,
                             color: Colors.grey),
                       ),
-                      SizedBox(height: 24,),
+                      const SizedBox(height: 24,),
                       inputCredentialsField('Name', 'Enter your name'),
-                      SizedBox(height: 24,),
+                      const SizedBox(height: 24,),
                       inputCredentialsField('Email', 'Enter your email'),
-                      SizedBox(height: 24,),
+                      const SizedBox(height: 24,),
                       inputCredentialsField('Password', 'Enter your password'),
-                      SizedBox(height: 32,),
+                      const SizedBox(height: 32,),
                       btnregister(size),
                       pagefooter()
                     ],

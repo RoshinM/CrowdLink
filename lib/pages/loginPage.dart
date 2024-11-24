@@ -17,7 +17,7 @@ class _LoginPageState extends State<LoginPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(fieldName,
-          style: TextStyle(color: Color(0xFF747474),
+          style: const TextStyle(color: Color(0xFF747474),
             fontSize: 16,
           ),
         ),
@@ -44,12 +44,12 @@ class _LoginPageState extends State<LoginPage> {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: Colors.blue, // Focused border color
                 width: 1.5,
               ),
             ),
-            contentPadding: EdgeInsets.symmetric(
+            contentPadding: const EdgeInsets.symmetric(
               vertical: 16,
               horizontal: 16,
             ), // Inner padding for the text field
@@ -64,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
       alignment: Alignment.centerRight,
       child: GestureDetector(
         onTap: () {},
-        child: Text(
+        child: const Text(
           'Forgot Password?',
           style: TextStyle(
             color: Color(0xFF2824E1),
@@ -89,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
             borderRadius: BorderRadius.circular(12), // Rounded corners
           ),
         ),
-        child: Text(
+        child: const Text(
           'Log In',
           style: TextStyle(
             color: Colors.white, // Text color
@@ -107,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               "Don't have an account? ",
               style: TextStyle(fontSize: 18,
                 fontWeight: FontWeight.w400,
@@ -118,11 +118,11 @@ class _LoginPageState extends State<LoginPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => RegisterPage(),
+                    builder: (context) => const RegisterPage(),
                   ),
                 );
               },
-              child: Text(
+              child: const Text(
                 'Sign Up',
                 style: TextStyle(fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -155,7 +155,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.only(top: 34,left: 18, right: 20, bottom:24),
+                  padding: const EdgeInsets.only(top: 34,left: 18, right: 20, bottom:24),
                   child: Column(
                     children: [
                       Text(
@@ -163,19 +163,19 @@ class _LoginPageState extends State<LoginPage> {
                         style: GoogleFonts.outfit(fontSize: 32,
                             fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(height: 8,),
+                      const SizedBox(height: 8,),
                       Text(
                         'Enter a short Subtitle here',
                         style: GoogleFonts.outfit(fontSize: 16,
                             color: Colors.grey),
                       ),
-                      SizedBox(height: 24,),
+                      const SizedBox(height: 24,),
                       inputCredentialsField('Email', 'Enter your email'),
-                      SizedBox(height: 24,),
+                      const SizedBox(height: 24,),
                       inputCredentialsField('Password', 'Enter your password'),
-                      SizedBox(height: 8,),
+                      const SizedBox(height: 8,),
                       forgotPassword(),
-                      SizedBox(height: 32,),
+                      const SizedBox(height: 32,),
                       btnlogin(size),
                       pagefooter()
                     ],
