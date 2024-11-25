@@ -1,4 +1,5 @@
 import 'package:crowd_link/pages/chatPage.dart';
+import 'package:crowd_link/pages/explorePage.dart';
 import 'package:crowd_link/pages/inboxPage.dart';
 import 'package:crowd_link/pages/loginPage.dart';
 import 'package:crowd_link/pages/registrationPage.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: ChatPage(),
+      home: ExplorePage(),
     );
   }
 }
