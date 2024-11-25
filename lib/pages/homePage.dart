@@ -13,6 +13,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   topNavBar(){
+    //Used to be wrapped by Expanded but that causes Exception
     return Container(
       padding: EdgeInsets.symmetric(vertical: 16, horizontal: 22),
       decoration: const BoxDecoration(
@@ -53,26 +54,28 @@ class _HomePageState extends State<HomePage> {
   }
 
   homePageBody(Size size){
-    return Expanded(
-        child: Container(
-          width: size.width,
-          padding: EdgeInsets.only(left: 18,top: 24,right: 18),
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(25),
-              topRight: Radius.circular(25),
-            ),
-          ),
-          child: ListView(//Vertical Scroll Listview
-          children: [
-              // Text("Make the list view here"),
-              campaignCard(size),
-              SizedBox(height: 10,),
-              campaignCard(size),
-            ],
-          ),
+    return Container(
+      width: size.width,
+      height: size.height,
+      padding: EdgeInsets.only(left: 18,top: 24,right: 18),
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(25),
+          topRight: Radius.circular(25),
         ),
+      ),
+      child: ListView(//Vertical Scroll Listview
+          physics: NeverScrollableScrollPhysics(),
+      children: [
+          // Text("Make the list view here"),
+          campaignCard(size),
+          SizedBox(height: 10,),
+          campaignCard(size),
+          SizedBox(height: 10,),
+          campaignCard(size),
+        ],
+      ),
     );
   }
 
@@ -190,18 +193,76 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  //TODO: when moving to another file add another parameter to tell it which page it is in
+  bottomNavBar(Size size){
+    var barWidth = size.width/1.6;
+    var barHeight = size.height/12;
+    return Container(
+      width: barWidth,
+      height: barHeight,
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+          color: Colors.black,
+          borderRadius: BorderRadius.circular(50)
+      ),
+      child: Row(
+        children: [
+          //TODO: change the boolean when in another page
+          bottomNavPageIcons(barWidth, barHeight,true,Icons.home_outlined),
+          SizedBox(width: 4,),
+          bottomNavPageIcons(barWidth, barHeight,false,Icons.search),
+          SizedBox(width: 4,),
+          bottomNavPageIcons(barWidth, barHeight,false,Icons.monitor_heart),
+          SizedBox(width: 4,),
+          bottomNavPageIcons(barWidth, barHeight,false,Icons.account_circle_outlined),
+        ],
+      ),
+    );
+  }
+
+  bottomNavPageIcons(double barWidth, double barHeight, bool isSelected,
+      IconData icon){
+    return Container(
+      width: barWidth/4.6,
+      height: barHeight,
+      decoration: BoxDecoration(
+          color: isSelected ? Color(0xFF66CC99) : Colors.transparent,
+          borderRadius: BorderRadius.circular(50)
+      ),
+      //if isSelected then change icon color
+      child: Icon(
+        icon,
+        color: isSelected ? Colors.black : Color(0xFFD6D3D3),
+        size: barHeight/2.4,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.black,
-      body: Column(
+      body: Stack(
         children: [
-          //Need to make space for system top bar
-          topNavBar(),
-          SizedBox(height: 1,),
-          homePageBody(size),
+          SingleChildScrollView(//Added this without Expanded but need to figure out
+                                //how to expand the body to a size as long as the
+                                //number of cards generated
+            child: Column(
+              children: [
+                //Need to make space for system top bar
+                topNavBar(),
+                SizedBox(height: 1,),
+                homePageBody(size),
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 20,
+            left:size.width/2 - size.width/3.2,
+            child: bottomNavBar(size),
+          )
         ],
       ),
     );
