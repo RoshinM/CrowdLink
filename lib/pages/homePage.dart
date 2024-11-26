@@ -226,6 +226,7 @@ class _HomePageState extends State<HomePage> {
     var barWidth = size.width/1.6;
     var barHeight = size.height/12;
     return Container(
+      margin: EdgeInsets.only(left: size.width/15),
       width: size.width,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
