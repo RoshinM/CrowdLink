@@ -124,58 +124,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  //TODO: when moving to another file add another parameter to tell it which page it is in
-  bottomNavBar(Size size){
-    var barWidth = size.width/1.6;
-    var barHeight = size.height/12;
-    return Container(
-      margin: EdgeInsets.only(left: size.width/15),
-      width: size.width,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            width: barWidth,
-            height: barHeight,
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.circular(50)
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                //TODO: change the boolean when in another page
-                bottomNavPageIcons(barWidth, barHeight,true,Icons.home_outlined),
-                bottomNavPageIcons(barWidth, barHeight,false,Icons.search),
-                bottomNavPageIcons(barWidth, barHeight,false,Icons.monitor_heart),
-                bottomNavPageIcons(barWidth, barHeight,false,Icons.account_circle_outlined),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  bottomNavPageIcons(double barWidth, double barHeight, bool isSelected,
-      IconData icon){
-    return Container(
-      width: barWidth/4.6,
-      height: barHeight,
-      decoration: BoxDecoration(
-          color: isSelected ? Color(0xFF66CC99) : Colors.transparent,
-          borderRadius: BorderRadius.circular(50)
-      ),
-      //if isSelected then change icon color
-      child: Icon(
-        icon,
-        color: isSelected ? Colors.black : Color(0xFFD6D3D3),
-        size: barHeight/2.4,
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     String currentPage = 'HomePage';
