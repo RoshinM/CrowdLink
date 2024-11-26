@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Components/campaignCard.dart';
+import '../Components/bottomNavBar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -64,6 +65,7 @@ class _HomePageState extends State<HomePage> {
           topRight: Radius.circular(25),
         ),
       ),
+      //TODO: Make this single constructor call with count once firebase integrated
       child: ListView(//Vertical Scroll Listview
         physics: NeverScrollableScrollPhysics(),
         primary: true,
@@ -176,17 +178,18 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    String currentPage = 'HomePage';
     var size = MediaQuery.of(context).size;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.black,
-      body: SafeArea(
+      body: SafeArea(//Making space for system top bar
+        //Main scrollable body
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
-              //TODO:Need to make space for system top bar
-              //TODO:Make topNavBar() into AppBar()
+              //TODO:Try making topNavBar() into AppBar()
               topNavBar(),
               SizedBox(height: 1,),
               homePageBody(size),
@@ -194,7 +197,11 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      floatingActionButton: bottomNavBar(size),
+      //Fixed bottom navbar
+      floatingActionButton:BottomNavBar(
+        size: size,
+        currentPage: currentPage,
+      ),
     );
   }
 }
