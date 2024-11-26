@@ -159,12 +159,14 @@ class _InboxPageState extends State<InboxPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.black,
-      body: Column(
-        children: [
-          topNavBar(),
-          const SizedBox(height: 1,),
-          homePageBody(size),
-        ],
+      body: SafeArea(
+        child: Column(
+          children: [
+            topNavBar(),
+            const SizedBox(height: 1,),
+            homePageBody(size),
+          ],
+        ),
       ),
     );
   }
