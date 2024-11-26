@@ -61,7 +61,7 @@ class _ExplorePageState extends State<ExplorePage> {
     );
   }
 
-  Widget buildCategoryItem(IconData icon, String label) {
+  Widget categoryItem(IconData icon, String label) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -82,7 +82,7 @@ class _ExplorePageState extends State<ExplorePage> {
     );
   }
 
-  Widget buildCampaignCard() {
+  Widget campaignCard() {
     return Container(
       width: 240,
       decoration: BoxDecoration(
@@ -98,7 +98,7 @@ class _ExplorePageState extends State<ExplorePage> {
                 height: 140,
                 decoration: BoxDecoration(
                   color: Colors.grey[400],
-                  borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+                  borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
                 ),
               ),
               Positioned(
@@ -159,7 +159,7 @@ class _ExplorePageState extends State<ExplorePage> {
     );
   }
 
-  Widget buildPopularCard() {
+  Widget popularCard() {
     return Container(
       margin: const EdgeInsets.all(6),
       padding: const EdgeInsets.all(12),
@@ -340,10 +340,10 @@ class _ExplorePageState extends State<ExplorePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                buildCategoryItem(Icons.school_outlined, 'Education'),
-                buildCategoryItem(Icons.sports_esports_outlined, 'Gaming'),
-                buildCategoryItem(Icons.palette_outlined, 'Art'),
-                buildCategoryItem(Icons.rice_bowl_outlined, 'Food'),
+                categoryItem(Icons.school_outlined, 'Education'),
+                categoryItem(Icons.sports_esports_outlined, 'Gaming'),
+                categoryItem(Icons.palette_outlined, 'Art'),
+                categoryItem(Icons.rice_bowl_outlined, 'Food'),
               ],
             ),
           ),
@@ -383,13 +383,13 @@ class _ExplorePageState extends State<ExplorePage> {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                buildCampaignCard(),
+                campaignCard(),
                 const SizedBox(width: 16),
-                buildCampaignCard(),
+                campaignCard(),
                 const SizedBox(width: 16),
-                buildCampaignCard(),
+                campaignCard(),
                 const SizedBox(width: 16),
-                buildCampaignCard(),
+                campaignCard(),
               ],
             ),
           ),
@@ -426,11 +426,11 @@ class _ExplorePageState extends State<ExplorePage> {
           const SizedBox(height: 10),
           Column(
             children: [
-              buildPopularCard(),
+              popularCard(),
               const SizedBox(height: 6),
-              buildPopularCard(),
+              popularCard(),
               const SizedBox(height: 6),
-              buildPopularCard(),
+              popularCard(),
               const SizedBox(height: 6),
             ],
           ),
