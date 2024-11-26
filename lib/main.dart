@@ -3,6 +3,7 @@ import 'package:crowd_link/pages/detailPage.dart';
 import 'package:crowd_link/pages/explorePage.dart';
 import 'package:crowd_link/pages/inboxPage.dart';
 import 'package:crowd_link/pages/loginPage.dart';
+import 'package:crowd_link/pages/profilePage.dart';
 import 'package:crowd_link/pages/registrationPage.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const DetailPage(),
+      home: const ProfilePage(),
     );
   }
 }
