@@ -1,4 +1,4 @@
-package com.example.crowd_link
+package com.example.crowdlink
 
 import io.flutter.embedding.android.FlutterActivity
 

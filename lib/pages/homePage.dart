@@ -13,7 +13,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   topNavBar(){
-    //Used to be wrapped by Expanded but that causes Exception
     return Container(
       padding: EdgeInsets.symmetric(vertical: 16, horizontal: 22),
       decoration: const BoxDecoration(
@@ -56,7 +55,6 @@ class _HomePageState extends State<HomePage> {
   homePageBody(Size size){
     return Container(
       width: size.width,
-      height: size.height,
       padding: EdgeInsets.only(left: 18,top: 24,right: 18),
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -66,9 +64,11 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       child: ListView(//Vertical Scroll Listview
-          physics: NeverScrollableScrollPhysics(),
-      children: [
-          // Text("Make the list view here"),
+        physics: NeverScrollableScrollPhysics(),
+        primary: true,
+        shrinkWrap: true,
+        children: [
+          // Make the list view here
           campaignCard(size),
           SizedBox(height: 10,),
           campaignCard(size),
@@ -178,15 +178,13 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-          Expanded(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text('Catergory'),
-                SizedBox(width: 10,),
-                Text('Backed by 1,987 people')
-              ],
-            ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text('Catergory'),
+              SizedBox(width: 10,),
+              Text('Backed by 1,987 people')
+            ],
           )
         ],
       ),
@@ -198,23 +196,29 @@ class _HomePageState extends State<HomePage> {
     var barWidth = size.width/1.6;
     var barHeight = size.height/12;
     return Container(
-      width: barWidth,
-      height: barHeight,
-      padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-          color: Colors.black,
-          borderRadius: BorderRadius.circular(50)
-      ),
+      width: size.width,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          //TODO: change the boolean when in another page
-          bottomNavPageIcons(barWidth, barHeight,true,Icons.home_outlined),
-          SizedBox(width: 4,),
-          bottomNavPageIcons(barWidth, barHeight,false,Icons.search),
-          SizedBox(width: 4,),
-          bottomNavPageIcons(barWidth, barHeight,false,Icons.monitor_heart),
-          SizedBox(width: 4,),
-          bottomNavPageIcons(barWidth, barHeight,false,Icons.account_circle_outlined),
+          Container(
+            width: barWidth,
+            height: barHeight,
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(50)
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                //TODO: change the boolean when in another page
+                bottomNavPageIcons(barWidth, barHeight,true,Icons.home_outlined),
+                bottomNavPageIcons(barWidth, barHeight,false,Icons.search),
+                bottomNavPageIcons(barWidth, barHeight,false,Icons.monitor_heart),
+                bottomNavPageIcons(barWidth, barHeight,false,Icons.account_circle_outlined),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -244,27 +248,19 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.black,
-      body: Stack(
-        children: [
-          SingleChildScrollView(//Added this without Expanded but need to figure out
-                                //how to expand the body to a size as long as the
-                                //number of cards generated
-            child: Column(
-              children: [
-                //Need to make space for system top bar
-                topNavBar(),
-                SizedBox(height: 1,),
-                homePageBody(size),
-              ],
-            ),
-          ),
-          Positioned(
-            bottom: 20,
-            left:size.width/2 - size.width/3.2,
-            child: bottomNavBar(size),
-          )
-        ],
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            //TODO:Need to make space for system top bar
+            //TODO:Make topNavBar() into AppBar()
+            topNavBar(),
+            SizedBox(height: 1,),
+            homePageBody(size),
+          ],
+        ),
       ),
+      floatingActionButton: bottomNavBar(size),
     );
   }
 }
