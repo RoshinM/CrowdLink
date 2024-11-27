@@ -1,5 +1,6 @@
 import 'package:crowd_link/pages/explorePage.dart';
 import 'package:crowd_link/pages/homePage.dart';
+import 'package:crowd_link/pages/profilePage.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatelessWidget {
@@ -77,7 +78,10 @@ class BottomNavBar extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    // Redirect to ExplorePage
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProfilePage()),
+                    );
                   },
                   child: BottomNavPageIcon(
                     barWidth: barWidth,
